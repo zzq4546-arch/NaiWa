@@ -1,0 +1,14 @@
+# build artifacts
+/NaiWa.exe
+/NaiWa-*.zip
+/NaiWa-settings.ini
+/log/
+
+# dev-only workspace (analysis frames, tools, scratch)
+/过程文件/
+
+# editor / os
+.vs/
+*.user
+.DS_Store
+Thumbs.db
