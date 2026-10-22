@@ -2,6 +2,7 @@
 /NaiWa.exe
 /NaiWa-*.zip
 /NaiWa-settings.ini
+/NaiWa-sound.tmp.wav
 /log/
 
 # dev-only workspace (analysis frames, tools, scratch)
@@ -11,4 +12,4 @@
 .vs/
 *.user
 .DS_Store
-Thumbs.db
+Thumbs.db/NaiWa-todos.txt

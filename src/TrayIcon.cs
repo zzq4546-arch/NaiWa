@@ -24,11 +24,17 @@ namespace NaiWa
             show.Click += delegate { ShowPet(); };
             var hide = new ToolStripMenuItem("隐藏");
             hide.Click += delegate { window.Hide(); };
+            var todoItem = new ToolStripMenuItem("待办…");
+            todoItem.Click += delegate { window.OpenTodos(); };
+            var settingsItem = new ToolStripMenuItem("设置…");
+            settingsItem.Click += delegate { window.OpenSettings(); };
             var exit = new ToolStripMenuItem("退出");
             exit.Click += delegate { window.Close(); };
             menu.Items.Add(show);
             menu.Items.Add(hide);
             menu.Items.Add(new ToolStripSeparator());
+            menu.Items.Add(todoItem);
+            menu.Items.Add(settingsItem);
             menu.Items.Add(exit);
             notify.ContextMenuStrip = menu;
             notify.DoubleClick += delegate { ShowPet(); };

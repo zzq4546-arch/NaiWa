@@ -35,7 +35,13 @@ namespace NaiWa
 
                 window.Show();
 
-                if (!settings.TipShown)
+                if (!settings.OnboardingDone)
+                {
+                    var welcome = new WelcomeWindow(window, settings);
+                    welcome.Show();
+                    welcome.Activate();
+                }
+                else if (!settings.TipShown)
                 {
                     settings.TipShown = true;
                     settings.Save();

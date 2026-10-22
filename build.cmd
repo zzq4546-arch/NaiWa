@@ -26,9 +26,13 @@ if not exist "assets\naiwa.ico" goto :noasset
   -resource:assets\naiwa-idle.png,naiwa.idle.png ^
   -resource:assets\naiwa-laugh-strip.png,naiwa.laugh.png ^
   -resource:assets\naiwa-laugh.wav,naiwa.laugh.wav ^
+  -resource:assets\skin1.png,naiwa.skin1.png ^
+  -resource:assets\skin2.png,naiwa.skin2.png ^
+  -resource:assets\skin3.png,naiwa.skin3.png ^
+  -resource:assets\skin4.png,naiwa.skin4.png ^
   -r:"%PF%" -r:"%PC%" -r:"%WB%" -r:"%SX%" ^
   -r:System.Drawing.dll -r:System.Windows.Forms.dll ^
-  src\Program.cs src\Settings.cs src\PetWindow.cs src\TrayIcon.cs src\Log.cs
+  src\Program.cs src\Settings.cs src\PetWindow.cs src\TrayIcon.cs src\Log.cs src\MiniPetWindow.cs src\SettingsWindow.cs src\TodoStore.cs src\BubbleWindow.cs src\WelcomeWindow.cs src\TodoWindow.cs
 if errorlevel 1 goto :failed
 echo.
 echo Build OK: NaiWa.exe
