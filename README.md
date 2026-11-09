@@ -52,3 +52,18 @@ screenshots/
 - 皮肤只影响待机/走路；动作仍使用原皮
 - 视频动作库（抱头笑/弯腰/笑倒）尚未接入，待后续抽取
 - 未指定开源许可证；角色素材权利归原作者
+
+## 技术实现
+
+- **无边框透明窗口**：`WindowStyle=None` + `AllowsTransparency=true` + `Topmost`；
+  通过 `SetWindowLong` 追加 `WS_EX_TOOLWINDOW | WS_EX_NOACTIVATE`，不占任务栏、不抢焦点。
+- **点击穿透**：挂 `HwndSource` 钩子处理 `WM_NCHITTEST`，穿透模式下透明区域不拦截鼠标。
+- **动画与行为状态机**：7 个 `DispatcherTimer` 分别驱动动作、眨眼、眼神、歪头、生活行为、
+  提醒与行为调度，按优先级抢占，避免多段动画互相打架。
+- **多窗口结构**：主宠 `PetWindow`、气泡 `BubbleWindow`、待办 `TodoWindow`、设置 `SettingsWindow`、
+  首次引导 `WelcomeWindow`、迷你模式 `MiniPetWindow`，外加 `TrayIcon` 托盘。
+- **本地持久化**：待办与设置写入 `%LocalAppData%\NaiWa\todos.txt`，并按 exe 目录、临时目录
+  多级回退，保证在只读目录下也能启动。
+- **零依赖单文件构建**：`build.cmd` 直接调用系统自带 .NET Framework 4.x 的 `csc.exe`，
+  用 `-resource` 内嵌 PNG/WAV 素材、`-target:winexe -optimize+` 产出单个 exe；
+  不需要安装 SDK，也没有 NuGet 依赖。
